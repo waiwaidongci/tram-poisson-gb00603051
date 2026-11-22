@@ -27,3 +27,27 @@ def schedule(item):
 def delivery(item):
     return {'id': item.id, 'run_id': item.run_id, 'recipient': item.recipient,
             'state': item.state, 'detail': item.detail, 'created_at': iso(item.created_at)}
+
+
+def monitor(item):
+    return {'id': item.id, 'run_id': item.run_id, 'window_count': item.window_count,
+            'family_alpha': item.family_alpha, 'alpha_per_window': item.alpha_per_window,
+            'author': item.author, 'created_at': iso(item.created_at),
+            'updated_at': iso(item.updated_at), 'snapshot': item.snapshot}
+
+
+def report(item):
+    return {'id': item.id, 'monitor_id': item.monitor_id, 'window_key': item.window_key,
+            'version': item.version, 'count': item.count, 'observed_on': item.observed_on,
+            'actor': item.actor, 'created_at': iso(item.created_at)}
+
+
+def alarm(item):
+    return {'id': item.id, 'monitor_id': item.monitor_id, 'window_key': item.window_key,
+            'window_date': item.window_date, 'road': item.road, 'intersection': item.intersection,
+            'shift': item.shift, 'predicted': item.predicted, 'critical': item.critical,
+            'alpha_per_window': item.alpha_per_window, 'fired_on': item.fired_on,
+            'fired_count': item.fired_count, 'fired_p_value': item.fired_p_value,
+            'state': item.state, 'withdrawn_on': item.withdrawn_on,
+            'withdraw_reason': item.withdraw_reason, 'basis': item.basis, 'version': item.version,
+            'created_at': iso(item.created_at), 'updated_at': iso(item.updated_at)}

@@ -7,7 +7,8 @@ from src.config.database import Base, engine
 from src.config.settings import SEED_DEMO
 from src.domain.spec import SPEC
 from src.middlewares import errors, headers, rate
-from src.routes import distribution, identity, registry, runs
+from src.models import monitoring as monitoring_models  # noqa: F401  注册盯盘表到 Base.metadata
+from src.routes import distribution, identity, monitoring, registry, runs
 from src.utils.wakeup import broker
 
 log = logging.getLogger(__name__)
@@ -29,7 +30,7 @@ app = FastAPI(title=SPEC['title'], lifespan=lifespan)
 errors.install(app)
 headers.install(app)
 rate.install(app)
-for module in (identity, registry, runs):
+for module in (identity, registry, runs, monitoring):
     app.include_router(module.router)
 if SPEC.get('scheduled'):
     app.include_router(distribution.router)

@@ -107,6 +107,15 @@ textarea { resize:vertical; }
 .decision { margin-top:.8rem; padding-left:.7rem; border-left:3px solid var(--accent); }
 .schedule-fields { border-top:1px solid var(--line); padding-top:.65rem; }
 .schedule-fields > :not(summary) { margin-top:.7rem; }
+.pill[data-state="告警中"] { border-color:oklch(58% .16 29); color:oklch(45% .17 29); font-weight:800; }
+.pill[data-state="已撤回"] { border-color:var(--muted); color:var(--muted); text-decoration:line-through; }
+.pill[data-state="等齐"] { border-color:oklch(55% .13 145); color:oklch(42% .12 145); }
+.pill[data-state="缺窗等待"], .pill[data-state="待等齐"], .pill[data-state="待实绩"] { border-color:oklch(60% .12 85); color:var(--muted); }
+.modal-overlay { position:fixed; inset:0; background:color-mix(in oklch,var(--nav) 62%,transparent);
+  display:grid; place-items:center; padding:1.2rem; z-index:30; }
+.modal { width:min(30rem,100%); background:var(--paper); border:1px solid var(--line);
+  border-top:4px solid var(--accent); padding:1.35rem; max-height:90svh; overflow:auto; }
+.modal-form .actions { margin-top:1rem; }
 body[data-page="results"] .main > div > .panel { margin-top:1rem; }
 .login { display:grid; grid-template-columns:1.65fr minmax(300px,1fr); min-height:100svh; }
 .login-intro { padding:clamp(1.75rem,8.7vw,10rem) clamp(1.75rem,6.9vw,7.4rem); background:var(--nav); color:var(--nav-ink); align-content:center; }

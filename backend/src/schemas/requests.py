@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from pydantic import BaseModel, ConfigDict, Field
 from src.constants.enums import Review
 
@@ -28,3 +28,8 @@ class ScheduleRequest(RunRequest):
     recipient: str = Field(min_length=1, max_length=100)
     first_at: datetime
     repeat_daily: bool = False
+
+class ActualRequest(Request):
+    window_key: str = Field(min_length=1, max_length=160)
+    count: int = Field(ge=0, le=10000)
+    observed_on: date
